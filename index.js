@@ -53,7 +53,7 @@ const requireLogin = (req, res, next) => {
     if (req.session.userId) {
         next();
     } else {
-        res.redirect(basePath + '/login');
+        res.redirect('./login');
     }
 };
 
@@ -125,7 +125,7 @@ app.post(basePath + '/registered', [
         return res.send(`
             <h1>Registration Error</h1>
             <p>${errors.array().map(e => e.msg).join('<br>')}</p>
-            <a href="${basePath}/register">Go back</a>
+            <a href="./register">Go back</a>
         `);
     }
 
@@ -151,20 +151,20 @@ app.post(basePath + '/registered', [
                     return res.send(`
                         <h1>Registration Error</h1>
                         <p>Username or email already exists. Please try another.</p>
-                        <a href="${basePath}/register">Go back</a>
+                        <a href="./register">Go back</a>
                     `);
                 }
                 return res.send(`
                     <h1>Registration Error</h1>
                     <p>An error occurred. Please try again.</p>
-                    <a href="${basePath}/register">Go back</a>
+                    <a href="./register">Go back</a>
                 `);
             }
             
             res.send(`
                 <h1>Registration Successful!</h1>
                 <p>Welcome, ${sanitizeInput(first)}! Your account has been created.</p>
-                <a href="${basePath}/login">Login now</a>
+                <a href="./login">Login now</a>
             `);
         });
     } catch (error) {
@@ -172,7 +172,7 @@ app.post(basePath + '/registered', [
         res.send(`
             <h1>Registration Error</h1>
             <p>An error occurred. Please try again.</p>
-            <a href="${basePath}/register">Go back</a>
+            <a href="./register">Go back</a>
         `);
     }
 });
@@ -193,7 +193,7 @@ app.post(basePath + '/loggedin', [
         return res.send(`
             <h1>Login Error</h1>
             <p>Please provide username and password.</p>
-            <a href="${basePath}/login">Go back</a>
+            <a href="./login">Go back</a>
         `);
     }
 
@@ -207,7 +207,7 @@ app.post(basePath + '/loggedin', [
             return res.send(`
                 <h1>Login Error</h1>
                 <p>An error occurred. Please try again.</p>
-                <a href="${basePath}/login">Go back</a>
+                <a href="./login">Go back</a>
             `);
         }
         
@@ -215,7 +215,7 @@ app.post(basePath + '/loggedin', [
             return res.send(`
                 <h1>Login Failed</h1>
                 <p>Invalid username or password.</p>
-                <a href="${basePath}/login">Try again</a>
+                <a href="./login">Try again</a>
             `);
         }
         
@@ -230,12 +230,12 @@ app.post(basePath + '/loggedin', [
                 req.session.username = user.username;
                 req.session.firstName = user.first_name;
                 
-                res.redirect(basePath + '/dashboard');
+                res.redirect('./dashboard');
             } else {
                 res.send(`
                     <h1>Login Failed</h1>
                     <p>Invalid username or password.</p>
-                    <a href="${basePath}/login">Try again</a>
+                    <a href="./login">Try again</a>
                 `);
             }
         } catch (error) {
@@ -243,7 +243,7 @@ app.post(basePath + '/loggedin', [
             res.send(`
                 <h1>Login Error</h1>
                 <p>An error occurred. Please try again.</p>
-                <a href="${basePath}/login">Go back</a>
+                <a href="./login">Go back</a>
             `);
         }
     });
@@ -308,7 +308,7 @@ app.post(basePath + '/workout-added', requireLogin, [
         return res.send(`
             <h1>Invalid Input</h1>
             <p>${errors.array().map(e => e.msg).join('<br>')}</p>
-            <a href="${basePath}/add-workout">Go back</a>
+            <a href="./add-workout">Go back</a>
         `);
     }
 
@@ -330,16 +330,16 @@ app.post(basePath + '/workout-added', requireLogin, [
             return res.send(`
                 <h1>Error</h1>
                 <p>Failed to add workout. Please try again.</p>
-                <a href="${basePath}/add-workout">Go back</a>
+                <a href="./add-workout">Go back</a>
             `);
         }
         
         res.send(`
             <h1>Workout Added!</h1>
             <p>Your workout has been successfully logged.</p>
-            <a href="${basePath}/dashboard">Back to Dashboard</a>
-            <a href="${basePath}/add-workout">Add Another</a>
-            <a href="${basePath}/list-workouts">View All Workouts</a>
+            <a href="./dashboard">Back to Dashboard</a>
+            <a href="./add-workout">Add Another</a>
+            <a href="./list-workouts">View All Workouts</a>
         `);
     });
 });
@@ -404,7 +404,7 @@ app.get(basePath + '/profile', requireLogin, (req, res) => {
         }
         
         if (userResults.length === 0) {
-            return res.redirect(basePath + '/logout');
+            return res.redirect('./logout');
         }
         
         const user = userResults[0];
@@ -447,7 +447,7 @@ app.get(basePath + '/logout', (req, res) => {
         if (err) {
             console.error('Error destroying session:', err);
         }
-        res.redirect(basePath + '/');
+        res.redirect('./');
     });
 });
 
@@ -456,7 +456,7 @@ app.use((req, res) => {
     res.status(404).send(`
         <h1>404 - Page Not Found</h1>
         <p>The page you're looking for doesn't exist.</p>
-        <a href="${basePath}/">Go to Home</a>
+        <a href="./">Go to Home</a>
     `);
 });
 
