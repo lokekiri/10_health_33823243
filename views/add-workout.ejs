@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Workout - Fittessness</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">Fittessness</a>
+            <ul>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/add-workout">Add Workout</a></li>
+                <li><a href="/list-workouts">My Workouts</a></li>
+                <li><a href="/search-workouts">Search</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Log a New Workout</h1>
+            <p>Record your exercise activity and track your progress</p>
+
+            <form action="/workout-added" method="POST">
+                <div class="form-group">
+                    <label for="date">Date *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="exercise">Exercise Name *</label>
+                    <input type="text" id="exercise" name="exercise" placeholder="e.g., Running, Bench Press, Yoga" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Duration (minutes) *</label>
+                    <input type="number" id="duration" name="duration" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="calories">Calories Burned *</label>
+                    <input type="number" id="calories" name="calories" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Notes (optional)</label>
+                    <textarea id="notes" name="notes" placeholder="How did you feel? Any observations?"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">Save Workout</button>
+                <a href="/dashboard" class="btn btn-secondary" style="margin-left: 10px;">Cancel</a>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Fittessness. Built for health and fitness enthusiasts.</p>
+    </footer>
+</body>
+</html>

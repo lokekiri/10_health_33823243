@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Workouts - Fittessness</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">Fittessness</a>
+            <ul>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/add-workout">Add Workout</a></li>
+                <li><a href="/list-workouts">My Workouts</a></li>
+                <li><a href="/search-workouts">Search</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>My Workout History</h1>
+            <p>View all your logged workouts</p>
+
+            <% if (workouts && workouts.length > 0) { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Exercise</th>
+                            <th>Duration (mins)</th>
+                            <th>Calories</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% workouts.forEach(function(workout) { %>
+                            <tr>
+                                <td><%= new Date(workout.date).toLocaleDateString() %></td>
+                                <td><%= workout.exercise %></td>
+                                <td><%= workout.duration %></td>
+                                <td><%= workout.calories %></td>
+                                <td><%= workout.notes || '-' %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p>No workouts logged yet. <a href="/add-workout">Add your first workout!</a></p>
+            <% } %>
+
+            <div style="margin-top: 20px;">
+                <a href="/add-workout" class="btn btn-success">Add New Workout</a>
+                <a href="/dashboard" class="btn btn-secondary" style="margin-left: 10px;">Back to Dashboard</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Fittessness. Built for health and fitness enthusiasts.</p>
+    </footer>
+</body>
+</html>

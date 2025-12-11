@@ -1,0 +1,13 @@
+# Fittessness - Application Links
+# GitHub Repository: 10_health_33823243
+# Replace <YOUR_URL> with your actual deployment URL from Goldsmiths server
+
+home=<YOUR_URL>/
+about=<YOUR_URL>/about
+register=<YOUR_URL>/register
+login=<YOUR_URL>/login
+dashboard=<YOUR_URL>/dashboard
+add_workout=<YOUR_URL>/add-workout
+list_workouts=<YOUR_URL>/list-workouts
+search_workouts=<YOUR_URL>/search-workouts
+profile=<YOUR_URL>/profile

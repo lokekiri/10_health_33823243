@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Fittessness</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">Fittessness</a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Login to Your Account</h1>
+            <p>Access your workout dashboard and continue your fitness journey.</p>
+
+            <form action="/loggedin" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a href="/register" class="btn btn-secondary" style="margin-left: 10px;">Create Account</a>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Fittessness. Built for health and fitness enthusiasts.</p>
+    </footer>
+</body>
+</html>
